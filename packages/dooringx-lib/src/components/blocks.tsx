@@ -17,8 +17,8 @@ interface BlockProps {
 	iframe?: boolean;
 }
 
-function pxToRem(number:number){
-  return (number / 100).toFixed(2) + 'rem'
+function pxToRem(input:any){
+  return (parseFloat(input) / 100).toFixed(2) + 'rem'
 }
 
 /**
@@ -82,7 +82,7 @@ function Blocks(props: PropsWithChildren<BlockProps>) {
 				props.data.fixed
 			);
 
-			setPreviewState({ top, left, width, height });
+			setPreviewState({ top: `${top}`, left: `${left}`, width: `${width}`, height: `${height}` });
 		};
 		fn();
 		window.addEventListener('resize', fn);

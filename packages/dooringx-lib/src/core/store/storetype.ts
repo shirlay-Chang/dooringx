@@ -54,8 +54,8 @@ export interface CustomAnimateObj {
 export interface IBlockType {
 	id: string;
 	name: string;
-	top: number;
-	left: number;
+	top: any;
+	left: any;
 	zIndex: number;
 	position: 'absolute' | 'relative' | 'fixed' | 'static' | 'sticky';
 	width?: number | string;
