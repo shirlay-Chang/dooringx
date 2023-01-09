@@ -17,6 +17,10 @@ interface BlockProps {
 	iframe?: boolean;
 }
 
+function pxToRem(number:number){
+  return (number / 100).toFixed(2) + 'rem'
+}
+
 /**
  * block在modal中也要使用，所以该组件不应该接收容器ref
  * 用来从component里拿到渲染进行渲染,由于异步拉代码，所以需要等待代码拉取完毕
@@ -27,10 +31,10 @@ function Blocks(props: PropsWithChildren<BlockProps>) {
 	const [state, setState] = useState<JSX.Element | null>(null);
 
 	const [previewState, setPreviewState] = useState({
-		top: props.data.top,
-		left: props.data.left,
-		height: props.data.height,
-		width: props.data.width,
+		top: pxToRem(props.data.top),
+		left: pxToRem(props.data.left),
+		height: pxToRem(props.data.height),
+		width: pxToRem(props.data.width),
 	});
 
 	useEffect(() => {
@@ -41,10 +45,10 @@ function Blocks(props: PropsWithChildren<BlockProps>) {
 		if (props.context === 'preview') {
 			newdata = {
 				...props.data,
-				top: previewState.top,
-				left: previewState.left,
-				height: previewState.height,
-				width: previewState.width,
+				top: pxToRem(previewState.top),
+				left: pxToRem(previewState.left),
+				height: pxToRem(previewState.height),
+				width: pxToRem(previewState.width),
 			};
 		}
 
@@ -205,10 +209,10 @@ function Blocks(props: PropsWithChildren<BlockProps>) {
 		} else {
 			const style = {
 				position: props.data.fixed ? 'fixed' : props.data.position,
-				top: previewState.top,
-				left: previewState.left,
-				width: previewState.width,
-				height: previewState.height,
+				top: pxToRem(previewState.top),
+				left: pxToRem(previewState.left),
+				width: pxToRem(previewState.width),
+				height: pxToRem(previewState.height),
 				zIndex: props.data.zIndex,
 				display: props.data.display,
 				transform: `rotate(${props.data.rotate.value}deg)`,
