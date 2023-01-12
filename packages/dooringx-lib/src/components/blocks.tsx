@@ -18,7 +18,7 @@ interface BlockProps {
 }
 
 function pxToRem(input:any){
-  return (parseFloat(input) / 100).toFixed(2) + 'rem'
+  return ((720/375) * parseFloat(input) / 100).toFixed(5) + 'rem'
 }
 
 /**
@@ -45,10 +45,10 @@ function Blocks(props: PropsWithChildren<BlockProps>) {
 		if (props.context === 'preview') {
 			newdata = {
 				...props.data,
-				top: pxToRem(previewState.top),
-				left: pxToRem(previewState.left),
-				height: pxToRem(previewState.height),
-				width: pxToRem(previewState.width),
+				top: previewState.top,
+				left: previewState.left,
+				height: previewState.height,
+				width: previewState.width,
 			};
 		}
 
@@ -209,10 +209,10 @@ function Blocks(props: PropsWithChildren<BlockProps>) {
 		} else {
 			const style = {
 				position: props.data.fixed ? 'fixed' : props.data.position,
-				top: pxToRem(previewState.top),
-				left: pxToRem(previewState.left),
-				width: pxToRem(previewState.width),
-				height: pxToRem(previewState.height),
+				top: previewState.top,
+				left: previewState.left,
+				width: previewState.width,
+				height: previewState.height,
 				zIndex: props.data.zIndex,
 				display: props.data.display,
 				transform: `rotate(${props.data.rotate.value}deg)`,
